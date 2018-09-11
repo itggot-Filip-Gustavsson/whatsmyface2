@@ -1,0 +1,14 @@
+<%= if user do %>
+	<form action="/logout" method="post">
+		<button type="submit">Log Out</button>
+	</form>
+<% else %>
+
+<form action="/login" method="post">
+	<label for="username">Username</label>
+	<input type="text" name="username" id="username" />
+	<label for="password">Password</label>
+	<input type="password" name="pwd" id="password" />
+	<button type="submit">Log In</button>
+</form>
+<% end %>
