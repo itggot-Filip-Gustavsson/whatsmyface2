@@ -17,7 +17,23 @@ defmodule Pluggy.WtfController do
       _   -> User.get(session_user)
     end
 
-    send_resp(conn, 200, render("wtf/index", wtf: Wtf.all(), user: current_user))
+    if current_user == nil do
+      send_resp(conn, 200, render("wtf/login", wtf: Wtf.all(), user: current_user))
+    else
+    
+      send_resp(conn, 200, render("wtf/index", wtf: Wtf.all(), user: current_user))
+    end
+  end
+
+  def login(conn) do
+    #get user if logged in
+    session_user = conn.private.plug_session["user_id"]
+    current_user = case session_user do
+      nil -> nil
+      _   -> User.get(session_user)
+    end
+
+    send_resp(conn, 200, render("wtf/login", wtf: Wtf.all(), user: current_user))
   end
 
   def new(conn),          do: send_resp(conn, 200, render("wtf/new", []))

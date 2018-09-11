@@ -23,7 +23,7 @@ defmodule Pluggy.Router do
   plug(:dispatch)
 
   get "/",                 do: WtfController.index(conn)
-  get "/wtf/new",       do: WtfController.new(conn)
+  get "/login",       do: WtfController.login(conn)
   get "/w/:id",            do: WtfController.show(conn, id)
   get "/wtf/:id/edit",  do: WtfController.edit(conn, id)
   
@@ -36,7 +36,7 @@ defmodule Pluggy.Router do
   post "/wtf/:id/destroy", do: WtfController.destroy(conn, id)
 
 
-  post "/users/login",     do: UserController.login(conn, conn.body_params)
+  post "/login",     do: UserController.login(conn, conn.body_params)
   post "/users/logout",    do: UserController.logout(conn)
 
   match _ do
