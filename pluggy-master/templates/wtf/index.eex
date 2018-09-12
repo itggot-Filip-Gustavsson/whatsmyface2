@@ -1,4 +1,10 @@
-<h1>index</h1>
-
-
-
+<h2 id="user">Welcome [user.username]!</h2>
+<div class="wrapper">
+    <div class="workspaces">hello</div>
+    <div class="workspaces">bye</div>
+    <div class="create workspaces">
+        <form action="/create/w" method="post">
+            <button type="submit">+</button>
+        </form>
+    </div>
+</div>
