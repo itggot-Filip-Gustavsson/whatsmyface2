@@ -1,10 +1,9 @@
-<form action="/login" method="post">
+<form action="/create/u" method="post">
+    <label for="name">name</label>
+    <input type="name" name="name" id="name" />
 	<label for="email">Email</label>
 	<input type="text" name="email" id="email" />
 	<label for="password">Password</label>
-	<input type="password" name="pwd" id="password" />
-	<button type="submit">Log In</button>
-    <input type="password" name="pwd" id="password" />
-	<button type="submit">Log In</button>
-</form>
+	<input type="password" name="pwd" id="password" /> 
+	<button type="submit">Register</button>
 </form>

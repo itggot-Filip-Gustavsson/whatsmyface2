@@ -5,7 +5,7 @@ defmodule Pluggy.Wtf do
 	alias Pluggy.Wtf
 
 	def all do
-		Postgrex.query!(DB, "SELECT * FROM users", [], [pool: DBConnection.Poolboy]).rows
+		Postgrex.query!(DB, "SELECT * FROM workspace", [], [pool: DBConnection.Poolboy]).rows
 		|> to_struct_list
 	end
 

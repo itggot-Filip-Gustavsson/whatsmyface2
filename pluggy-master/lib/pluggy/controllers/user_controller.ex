@@ -7,25 +7,42 @@ defmodule Pluggy.UserController do
 		email = params["email"]
 		password = params["pwd"]
 
+		IO.inspect(email)
+
 		result =
 		  Postgrex.query!(DB, "SELECT id, hash FROM users WHERE email = $1", [email],
 		    pool: DBConnection.Poolboy
-		  )
+			)
 
 		case result.num_rows do
 		  0 -> #no user with that username
-		    redirect(conn, "/login")
-		  _ -> #user with that username exists
-		    [[id, password_hash]] = result.rows
+		    IO.puts("no user with that email") && redirect(conn, "/login")
+			_ -> #user with that username exists
+		   [[id, password_hash]] = result.rows
 
 		    #make sure password is correct
 		    if Bcrypt.verify_pass(password, password_hash) do
 		      Plug.Conn.put_session(conn, :user_id, id)
-		      |>redirect("/index")
+		      |>redirect("/")
 		    else
 		      redirect(conn, "/login")
 		    end
 		end
+	end
+
+	def register(conn, params) do
+		email = params["email"]
+		name = params["name"]
+		pwd = params["pwd"]
+
+		password = Bcrypt.hash_pwd_salt(pwd)
+
+		Postgrex.query!(DB, "INSERT INTO users (email, name, hash) VALUES ($1, $2, $3)", [email, name, password],
+		    pool: DBConnection.Poolboy
+			)
+			
+		redirect(conn, "/")
+
 	end
 
 	def logout(conn) do
