@@ -8,7 +8,7 @@ defmodule Pluggy.WorkspaceController do
         
         code = Bcrypt.hash_pwd_salt(pwd)
 
-		Postgrex.query!(DB, "INSERT INTO workspace (name, company, hash) VALUES ($1, $2, $3)", [name, company, code,],
+		Postgrex.query!(DB, "INSERT INTO workspaces (name, company, hash) VALUES ($1, $2, $3)", [name, company, code,],
 		    pool: DBConnection.Poolboy
 			)
 			

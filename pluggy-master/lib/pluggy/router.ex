@@ -8,7 +8,7 @@ defmodule Pluggy.Router do
   plug Plug.Static, at: "/", from: :pluggy
   plug(:put_secret_key_base)
 
-  plug(Plug.Session,
+    plug(Plug.Session,
     store: :cookie,
     key: "_pluggy_session",
     encryption_salt: "cookie store encryption salt",

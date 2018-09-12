@@ -20,7 +20,7 @@ defmodule Pluggy.WtfController do
     if current_user == nil do
       send_resp(conn, 200, render("wtf/login", wtf: Wtf.all(), user: current_user))
     else
-      Postgrex.query!(DB, "SELECT * FROM workspace", [], [pool: DBConnection.Poolboy])
+      Postgrex.query!(DB, "SELECT * FROM workspaces", [], [pool: DBConnection.Poolboy])
 
       send_resp(conn, 200, render("wtf/index", wtf: Wtf.all(), user: current_user))
     end
