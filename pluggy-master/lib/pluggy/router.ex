@@ -31,6 +31,7 @@ defmodule Pluggy.Router do
   get "/create/w",      do: WtfController.createw(conn)
   get "/join/w",      do: WtfController.join(conn)
   
+  
   post "/wtf",          do: WtfController.create(conn, conn.body_params)
  
   # should be put /wtf/:id, but put/patch/delete are not supported without hidden inputs
@@ -39,6 +40,7 @@ defmodule Pluggy.Router do
   # should be delete /wtf/:id, but put/patch/delete are not supported without hidden inputs
   post "/wtf/:id/destroy", do: WtfController.destroy(conn, id)
   
+  post "/w/:id",            do: WorkspaceController.create_g(conn, id)
   post "/join/w",   do: WorkspaceController.join(conn, conn.body_params)
   post "/create/w",   do: WorkspaceController.create(conn, conn.body_params)
   post "/create/u",     do: UserController.register(conn, conn.body_params)

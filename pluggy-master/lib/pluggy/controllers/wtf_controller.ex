@@ -5,6 +5,7 @@ defmodule Pluggy.WtfController do
   alias Pluggy.Wtf
   alias Pluggy.User
   alias Pluggy.Workspace
+  alias Pluggy.Groups
   import Pluggy.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
@@ -49,7 +50,7 @@ defmodule Pluggy.WtfController do
   def join(conn),        do: send_resp(conn, 200, render("wtf/new_workspace", []))
   def register(conn),     do: send_resp(conn, 200, render("wtf/register", []))
   def new(conn),          do: send_resp(conn, 200, render("wtf/new", []))
-  def show(conn, id),     do: send_resp(conn, 200, render("wtf/show", ws: Wtf.get_i(id)))
+  def show(conn, id),     do: send_resp(conn, 200, render("wtf/show", gps: Groups.get(Wtf.get_i(id).id), ws: Wtf.get_i(id)))
   def edit(conn, id),     do: send_resp(conn, 200, render("wtf/edit", ws: Wtf.get_i(id)))
   
   def create(conn, params) do

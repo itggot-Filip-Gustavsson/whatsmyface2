@@ -1,11 +1,11 @@
-<h2 id="ws_name">Welcome to <%= ws.name %>!</h2>
+<h2>Welcome to <%= ws.company %>!</h2>
 
 <div class="wrapper">
 	<%= for gp <- gps do %>
         <div class="workspaces" id="<%= gp.id %>">
-            Company: <%= gp.company %>
+            Workspace: <%= ws.name %>
             <br />
-            Workspace: <%= gp.name %>
+            Group: <%= gp.name %>
         </div>
     <% end %>
     <div class="create group">

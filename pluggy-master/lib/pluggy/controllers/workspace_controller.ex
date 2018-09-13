@@ -63,6 +63,13 @@ defmodule Pluggy.WorkspaceController do
         redirect(conn, "/")
     end
 
+    def create_g(conn, params) do
+        name = params["name"]
+
+        
+        
+    end
+
 
     defp redirect(conn, url), do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
 
