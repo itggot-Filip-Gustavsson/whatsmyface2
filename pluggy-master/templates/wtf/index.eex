@@ -1,5 +1,12 @@
-<h2 id="user">Welcome <%= user.email %>!</h2>
+<h2 id="user">Welcome <%= user.name %>!</h2>
 <div class="wrapper">
+    <%= for ws <- wtf do %>
+        <div class="workspaces" id="<%= ws.id %>">
+            Company: <%= ws.company %>
+            <br />
+            Workspace: <%= ws.name %>
+        </div>
+    <% end %>
     <div class="create workspaces">
         <div id="add">+</div>
         <div id="create">Create</div>

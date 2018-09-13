@@ -17,6 +17,21 @@ header #title{
 	cursor: pointer;
 }
 
+header button#account{
+	position: fixed;
+	right: 20px;
+	background: none;
+	border: none;
+	color: white;
+	cursor: pointer;
+	font-size: 1.5rem;
+	font-family: serif;
+}
+
+header button#account:hover{
+	color: orange;
+}
+
 form{
 	margin: auto;
 	max-width: 20vw;;
@@ -34,7 +49,11 @@ form *{
 	width: 90vw;
 	border: 1px solid orange;
 	font-size: 8vw;
-	margin: auto;
+	margin: 20px auto;
+}
+
+.wrapper .workspaces:not(.create){
+	font-size: 4vw;
 }
 
 .wrapper .workspaces:hover:not(.create), .create *:hover{
