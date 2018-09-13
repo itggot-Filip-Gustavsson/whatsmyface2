@@ -17,25 +17,38 @@ header #title{
 	cursor: pointer;
 }
 
-form#login{
+form{
 	margin: auto;
 	max-width: 20vw;;
 	display: flex;
 	flex-direction: column;
 }
 
-form#login *{
+form *{
 	margin: 1px;
 	height: 2vw;
 }
 
 .wrapper .workspaces{
 	height: 10vw;
-	width: 10vw;
+	width: 90vw;
 	border: 1px solid orange;
+	font-size: 8vw;
+	margin: auto;
 }
 
-.wrapper .create form button{
-	height: 100%;
-	width: 100%;
+.wrapper .workspaces:hover:not(.create), .create *:hover{
+	transition: all .5s ease-in-out;
+	background-color: orange;
+	color: black;
+	cursor: pointer;
+}
+
+.create{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.create #add {
+	width: 200%;
 }
