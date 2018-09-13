@@ -10,9 +10,9 @@ defmodule Pluggy.Workspace do
 		|> to_struct_list
 	end
 
-	# def to_struct([[id]]) do
-	# 	%Workspace{id: id}
-	# end
+	 def to_struct([[id]]) do
+	 	%Workspace{id: id}
+	 end
 
 	def to_struct_list(rows) do
 		for [id] <- rows, do: %Workspace{id: id}

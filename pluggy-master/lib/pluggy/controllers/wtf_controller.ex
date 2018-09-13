@@ -18,7 +18,7 @@ defmodule Pluggy.WtfController do
     end
 
     if current_user == nil do
-      send_resp(conn, 200, render("wtf/login", wtf: Wtf.all(), user: current_user))
+      send_resp(conn, 200, render("wtf/login", user: current_user))
     else
       
       workspace = 
@@ -26,10 +26,11 @@ defmodule Pluggy.WtfController do
       |> Enum.reduce([], fn (head, acc) ->
         acc ++ Wtf.get(head.id)
       end) 
+      
 
 
 
-      send_resp(conn, 200, render("wtf/index", wtf: workspace, user: current_user, workspace_ids: Workspace.get(session_user)))
+      send_resp(conn, 200, render("wtf/index", wss: workspace, user: current_user, workspace_ids: Workspace.get(session_user)))
     end
   end
 
@@ -45,11 +46,11 @@ defmodule Pluggy.WtfController do
   end
 
   def createw(conn),      do: send_resp(conn, 200, render("wtf/new_workspace", []))
-  def joinw(conn),        do: send_resp(conn, 200, render("wtf/new_workspace", []))
-  def register(conn),     do: send_resp(conn, 200, render("wtf/register", wtf: Wtf.all()))
+  def join(conn),        do: send_resp(conn, 200, render("wtf/new_workspace", []))
+  def register(conn),     do: send_resp(conn, 200, render("wtf/register", []))
   def new(conn),          do: send_resp(conn, 200, render("wtf/new", []))
-  def show(conn, id),     do: send_resp(conn, 200, render("wtf/show", Wtf: Wtf.get_i(id)))
-  def edit(conn, id),     do: send_resp(conn, 200, render("wtf/edit", Wtf: Wtf.get_i(id)))
+  def show(conn, id),     do: send_resp(conn, 200, render("wtf/show", ws: Wtf.get_i(id)))
+  def edit(conn, id),     do: send_resp(conn, 200, render("wtf/edit", ws: Wtf.get_i(id)))
   
   def create(conn, params) do
     Wtf.create(params)
