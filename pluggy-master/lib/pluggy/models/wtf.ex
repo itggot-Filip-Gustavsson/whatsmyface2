@@ -16,7 +16,7 @@ defmodule Pluggy.Wtf do
 
 	def get_i(id) do
 		Postgrex.query!(DB, "SELECT id, name, company FROM workspaces WHERE id = $1", [String.to_integer(id)], [pool: DBConnection.Poolboy]).rows
-		|> to_struct_list
+		|> to_struct
 	end
 
 	def update(id, params) do
