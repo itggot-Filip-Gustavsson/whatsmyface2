@@ -7,7 +7,6 @@ defmodule Pluggy.UserController do
 		email = params["email"]
 		password = params["pwd"]
 
-		IO.inspect(email)
 
 		result =
 		  Postgrex.query!(DB, "SELECT id, hash FROM users WHERE email = $1", [email],

@@ -28,6 +28,8 @@ defmodule Pluggy.Router do
   get "/create/u",     do: WtfController.register(conn) 
   get "/w/:id",            do: WtfController.show(conn, id)
   get "/wtf/:id/edit",  do: WtfController.edit(conn, id)
+  get "/create/w",      do: WtfController.createw(conn)
+  get "/join/w",      do: WtfController.joinw(conn)
   
   post "/wtf",          do: WtfController.create(conn, conn.body_params)
  
