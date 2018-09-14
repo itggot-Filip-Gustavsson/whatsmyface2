@@ -4,7 +4,8 @@ defmodule Pluggy.Router do
   alias Pluggy.WtfController
   alias Pluggy.UserController
   alias Pluggy.WorkspaceController
-
+  alias Pluggy.GroupController
+  
   plug Plug.Static, at: "/", from: :pluggy
   plug(:put_secret_key_base)
 
@@ -40,6 +41,7 @@ defmodule Pluggy.Router do
   # should be delete /wtf/:id, but put/patch/delete are not supported without hidden inputs
   post "/wtf/:id/destroy", do: WtfController.destroy(conn, id)
   
+  post "/create/g",  do: GroupController.create(conn, conn.body_params)
   post "/w/:id",            do: WorkspaceController.create_g(conn, id)
   post "/join/w",   do: WorkspaceController.join(conn, conn.body_params)
   post "/create/w",   do: WorkspaceController.create(conn, conn.body_params)

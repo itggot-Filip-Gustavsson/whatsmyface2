@@ -50,7 +50,10 @@ defmodule Pluggy.WtfController do
   def join(conn),        do: send_resp(conn, 200, render("wtf/new_workspace", []))
   def register(conn),     do: send_resp(conn, 200, render("wtf/register", []))
   def new(conn),          do: send_resp(conn, 200, render("wtf/new", []))
-  def show(conn, id),     do: send_resp(conn, 200, render("wtf/show", gps: Groups.get(Wtf.get_i(id).id), ws: Wtf.get_i(id)))
+  def show(conn, id) do 
+    ws = Wtf.get_i(id)
+    send_resp(conn, 200, render("wtf/show", gps: Groups.get(ws.id), ws: ws))
+  end
   def edit(conn, id),     do: send_resp(conn, 200, render("wtf/edit", ws: Wtf.get_i(id)))
   
   def create(conn, params) do
