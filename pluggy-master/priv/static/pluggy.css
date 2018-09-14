@@ -72,6 +72,10 @@ form *{
 }
 
 .create #add,
-.group #create{
+.groups form#create{
 	width: 200%;
+}
+
+.groups form#create{
+	
 }

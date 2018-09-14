@@ -10,7 +10,8 @@
     <% end %>
     <div class="create groups">
 		<div id="add">+</div>
-		<form id="create" action="/create/g" method="post">
+		<form id="create" action="/create/g" method="post" autocomplete="off">
+			<input type="number" value="<%= ws.id %>" name="ws_id" style="display: none" readonly />
 			<input type= "text" placeholder="Group name" name="name"/> 
 			<button type="submit">Make a new group</button>
 		</form>
