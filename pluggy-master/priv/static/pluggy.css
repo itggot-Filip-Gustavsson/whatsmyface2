@@ -44,7 +44,8 @@ form *{
 	height: 2vw;
 }
 
-.wrapper .workspaces{
+.wrapper .workspaces,
+.wrapper .groups{
 	height: 10vw;
 	width: 90vw;
 	border: 1px solid orange;
@@ -52,11 +53,13 @@ form *{
 	margin: 20px auto;
 }
 
-.wrapper .workspaces:not(.create){
+.wrapper .workspaces:not(.create),
+.wrapper .groups:not(.create){
 	font-size: 4vw;
 }
 
-.wrapper .workspaces:hover:not(.create), .create *:hover{
+.wrapper .workspaces:hover:not(.create), .create *:hover,
+.wrapper .groups:hover:not(.create), .create *:hover{
 	transition: all .5s ease-in-out;
 	background-color: orange;
 	color: black;
@@ -68,6 +71,7 @@ form *{
 	grid-template-columns: 1fr 1fr;
 }
 
-.create #add {
+.create #add,
+.group #create{
 	width: 200%;
 }

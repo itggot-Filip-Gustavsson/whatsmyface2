@@ -2,13 +2,17 @@
 
 <div class="wrapper">
 	<%= for gp <- gps do %>
-        <div class="workspaces" id="<%= gp.id %>">
+        <div class="groups" id="<%= gp.id %>">
             Workspace: <%= ws.name %>
             <br />
             Group: <%= gp.name %>
         </div>
     <% end %>
-    <div class="create group">
-        <div id="add">+</div>
+    <div class="create groups">
+		<div id="add">+</div>
+		<form id="create" action="/create/g" method="post">
+			<input type= "text" placeholder="Group name" name="name"/> 
+			<button type="submit">Make a new group</button>
+		</form>
     </div>
 </div>
